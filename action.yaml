@@ -20,7 +20,7 @@ runs:
         ./arkscript --version
 
     - name: Check
-      shell: sh
+      shell: bash
       run: |
         failures=0
         while read -rd $'\0' file; do
