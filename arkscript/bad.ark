@@ -1,0 +1,23 @@
+# @brief Takes a value to match against a list of (possible value, code to run)...
+# @param value value to match
+# @param case first case
+# @param then value when first case matches
+# @param ...cases more (case, then)
+# @details Once the value is matched, it stops and doesn't try any other values.
+# =begin
+# (switch 4
+#     1 (print "hello")
+#     2 (print "bye")
+#     12 (print "jackpot")
+#     (+ 1 4) (print "computation")
+#     _ (print "default"))
+# =end
+# @author https://github.com/SuperFola
+($ switch (value case then ...cases) {
+    ($if (= "_" ($repr case))
+        then
+        (if (= value case)
+            then
+            ($if (>= (len cases) 2)
+                (switch value ...cases))))})
+
