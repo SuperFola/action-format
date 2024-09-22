@@ -29,7 +29,7 @@ runs:
           IFS=',' read -ra EXC <<< "${{ inputs.exclude }}"
           for i in "${EXC[@]}"; do
             # process "$i"
-            exclusions="$exclusions -not -path "'"'"$i/*"'"'
+            exclusions="$exclusions -not -path $i/*"
           done
           echo "Exclusions: '$exclusions'"
         fi
