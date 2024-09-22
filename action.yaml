@@ -39,6 +39,8 @@ runs:
           if ! ./arkscript --format "$file" --check; then
             echo "❌ $(basename $file) is not formatted correctly"
             failures=$((failures+1))
+          else
+            echo "✅ $(basename $file)"
           fi
         done < <(find "${{ inputs.folder }}" -type f -name "*.ark" $exclusions -print0)
         echo $failures
