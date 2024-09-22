@@ -24,7 +24,7 @@ runs:
     - name: Check
       shell: bash
       run: |
-        exclusions=
+        exclusions=''
         if [ -z "${{ inputs.exclude }}" ]; then
           IFS=',' read -ra EXC <<< "${{ inputs.exclude }}"
             for i in "${EXC[@]}"; do
@@ -32,6 +32,7 @@ runs:
               exclusions="$exclusions -not -path $i"
             done
         fi
+        echo "Exclusions: $exclusions"
 
         failures=0
         while read -rd $'\0' file; do
@@ -39,6 +40,6 @@ runs:
             echo "❌ $(basename $file) is not formatted correctly"
             failures=$((failures+1))
           fi
-        done < <(find "${{ inputs.folder }}" $exclusions -type f -name "*.ark" -print0)
+        done < <(find "${{ inputs.folder }}" -type f -name "*.ark" $exclusions -print0)
         echo $failures
         [ $failures -gt 0 ] && exit 1 || exit 0
