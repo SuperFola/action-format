@@ -7,5 +7,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ArkScript-lang/action-format@master
         with:
-          folder: example/
-          exclude: example/excluded/
+          folder: example
+          exclude: example/excluded

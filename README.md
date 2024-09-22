@@ -13,6 +13,9 @@ inputs:
     description: 'Folders to exclude, comma separated'
 ```
 
+> [!WARNING]
+> The folders **MUST NOT** be terminated by a `/`
+
 - **folder**: path to ArkScript files ; will be scanned recursively for `*.ark` files
 - **exclude**: list of path to exclude, eg `foo,bar,egg/test`
 
