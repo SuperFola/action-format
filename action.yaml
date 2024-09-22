@@ -26,13 +26,14 @@ runs:
       run: |
         exclusions=''
         if [ -z "${{ inputs.exclude }}" ]; then
+          echo "Exclusions: $${{ inputs.exclude }}"
           IFS=',' read -ra EXC <<< "${{ inputs.exclude }}"
-            for i in "${EXC[@]}"; do
-              # process "$i"
-              exclusions="$exclusions -not -path $i"
-            done
+          for i in "${EXC[@]}"; do
+            # process "$i"
+            exclusions="$exclusions -not -path $i"
+            echo $i
+          done
         fi
-        echo "Exclusions: $exclusions"
 
         failures=0
         while read -rd $'\0' file; do
