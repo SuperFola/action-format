@@ -25,7 +25,7 @@ runs:
       shell: bash
       run: |
         exclusions=''
-        if [ -z "${{ inputs.exclude }}" ]; then
+        if ! [ -z "${{ inputs.exclude }}" ]; then
           echo "Exclusions: $${{ inputs.exclude }}"
           IFS=',' read -ra EXC <<< "${{ inputs.exclude }}"
           for i in "${EXC[@]}"; do
