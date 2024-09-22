@@ -26,13 +26,12 @@ runs:
       run: |
         exclusions=''
         if ! [ -z "${{ inputs.exclude }}" ]; then
-          echo "Exclusions: $${{ inputs.exclude }}"
           IFS=',' read -ra EXC <<< "${{ inputs.exclude }}"
           for i in "${EXC[@]}"; do
             # process "$i"
             exclusions="$exclusions -not -path $i/*"
-            echo $i
           done
+          echo "Exclusions: '$exclusions'"
         fi
 
         failures=0
