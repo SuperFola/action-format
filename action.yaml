@@ -13,8 +13,9 @@ runs:
     - name: Download ArkScript latest release
       shell: sh
       run: |
-        wget -q $(curl -s https://api.github.com/repos/ArkScript-lang/Ark/releases?per_page=1 | grep "browser_download_url.*linux-clang-16.zip" | cut -d : -f 2,3 | tr -d \")
-        unzip -o linux-clang-16.zip
+        VERSION=linux-gcc-14
+        wget -q $(curl -s https://api.github.com/repos/ArkScript-lang/Ark/releases?per_page=1 | grep "browser_download_url.*${VERSION}.zip" | cut -d : -f 2,3 | tr -d \")
+        unzip -o ${VERSION}.zip
         chmod u+x ./arkscript
         ./arkscript --version
 
