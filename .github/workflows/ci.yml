@@ -8,3 +8,4 @@ jobs:
       - uses: ArkScript-lang/action-format@master
         with:
           folder: example/
+          excluded: example/excluded/
