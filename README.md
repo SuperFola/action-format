@@ -11,8 +11,6 @@ inputs:
     required: true
 ```
 
-> [!WARNING]
-> The folders **MUST NOT** be terminated by a `/`
-
-- **folder**: path to ArkScript files ; will be scanned for `*.ark` files
+- **folder**: path to ArkScript files ; will be scanned for `*.ark` files (not recursively)
+  - eg: `example/`, `example/format`
 
