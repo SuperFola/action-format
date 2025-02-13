@@ -8,3 +8,6 @@ jobs:
       - uses: ArkScript-lang/action-format@master
         with:
           folder: example/format
+      - uses: ArkScript-lang/action-format@master
+        with:
+          folder: example/format/
