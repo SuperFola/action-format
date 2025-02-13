@@ -22,6 +22,7 @@ runs:
     - name: Check
       shell: bash
       run: |
+        path=${{ inputs.folder }}
         failures=0
         while read -rd $'\0' file; do
           if ! ./arkscript --format "$file" --check; then
@@ -30,7 +31,6 @@ runs:
           else
             echo "✅ $(basename $file)"
           fi
-        path=${{ inputs.folder }}
         done < <(find "${path%/}" -type f -name "*.ark" -maxdepth 1 -print0)
 
         echo "$failures file(s) need to be formatted"
